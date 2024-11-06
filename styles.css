@@ -1,10 +1,67 @@
+/* index File (Intro) */
+#intro-background {
+    background-color: #FF7900;
+    height: 100vh;
+} #intro-main { /* Main Screen */
+    background-color: #040010;
+    height: 520px;
+    width: 550px;
+    max-width: 1000px;
+    min-width: 300px;
+    margin: 100px auto;
+    border-radius: 10px;
+    /* Flexbox */
+    display: flex;
+    flex-direction: column; /* Aligned the items vertically */
+    align-items: center; /* Centers items horizontally (vertically if the flex-direction is set to row)  */
+} #intro-main img { /* Logo */
+    height: 180px;
+    max-width: 200px;
+    min-width: 100px;
+    margin: 20px 0;
+    border-radius: 20px;
+} #intro-main h2 { /* Website Description*/
+    color: #fff;
+    margin: 0;
+} #intro-main #sub-logo { /* Sub-Logo */
+    margin: 0;
+} #intro-main a { /* Get Started Button */
+    background-color: #8800ff;
+    height: 40px;
+    width: 150px;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    /* Font */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bolder;
+    /* Transition Effect */
+    transition: background-color 0.3s ease;
+} #intro-main a:hover {
+    background-color: #53029a;
+}
+
 body {
     background-color: aliceblue;
     margin: 0;
+    font-family: Tahoma;
+}
+
+header {
+    margin: 0;
+    top: 0;
+    height: 70px;
+    background-color: #FF7900;
 }
 
 nav {
-    background-color: #FF7900;
+    background-color: #040010;
+    color: aliceblue;
     height: 100vh;
     width: 250px;
     left: 0;
