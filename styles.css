@@ -1,8 +1,12 @@
-/* index File (Intro) */
-#intro-background {
-    background-color: #FF7900;
+body {
+    font-family: Tahoma;
     height: 100vh;
-} #intro-main { /* Main Screen */
+}
+
+/* index File (Intro) */
+#intro-background {     /* Body */
+    background-color: #FF7900;
+} #intro-main {         /* Main */
     background-color: #040010;
     height: 520px;
     width: 550px;
@@ -14,18 +18,18 @@
     display: flex;
     flex-direction: column; /* Aligned the items vertically */
     align-items: center; /* Centers items horizontally (vertically if the flex-direction is set to row)  */
-} #intro-main img { /* Logo */
+} #intro-main img {     /* Logo */
     height: 180px;
     max-width: 200px;
     min-width: 100px;
     margin: 20px 0;
     border-radius: 20px;
-} #intro-main h2 { /* Website Description*/
+} #intro-main h2 {      /* Website Description*/
     color: #fff;
     margin: 0;
 } #intro-main #sub-logo { /* Sub-Logo */
     margin: 0;
-} #intro-main a { /* Get Started Button */
+} #intro-main a {       /* Get Started Button */
     background-color: #8800ff;
     height: 40px;
     width: 150px;
@@ -46,25 +50,29 @@
     background-color: #53029a;
 }
 
-body {
-    background-color: aliceblue;
+/* Simulators */
+#background {           /* Body */
+    background-color: #fff;
     margin: 0;
-    font-family: Tahoma;
-}
-
-header {
+} header {              /* Header  */
+    /* SIZING */
     margin: 0;
+    padding-left: 25px;
     top: 0;
-    height: 70px;
-    background-color: #FF7900;
-}
-
-nav {
-    background-color: #040010;
-    color: aliceblue;
-    height: 100vh;
-    width: 250px;
     left: 0;
-
-    position: fixed;
+    height: 70px;
+    width: 100%;
+    background-color: #040010;
+    /* CONTENT */
+    overflow: hidden;
+} header * {            /* Header Contents */
+    height: 100%;
+    float: left;    /* All Content Left */
+    color: #fff;
+    list-style-type: none; /* Removes List Bullets */
+    text-decoration: none; /* Removes List Underline */
+    text-align: center;
+} header li {
+    display: block;
+    padding: 10px 20px;
 }
