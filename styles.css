@@ -50,29 +50,50 @@ body {
     background-color: #53029a;
 }
 
-/* Simulators */
-#background {           /* Body */
+
+/* SIMULATORS */
+#background {/* BODY */
     background-color: #fff;
-    margin: 0;
-} header {              /* Header  */
-    /* SIZING */
-    margin: 0;
-    padding-left: 25px;
-    top: 0;
-    left: 0;
+    margin: 0;              /* Occupy the whole Backgorund */
+}
+/* HEADER */
+header {
+    /* BOX */
+    margin: 0;              /* Occupy the whole Header Element */
+    top: 0;                 /* Starting from the Top */
+    left: 0;                /* Starting from the Left */
     height: 70px;
-    width: 100%;
+    width: 100%;            /* Take Full Width */
     background-color: #040010;
     /* CONTENT */
-    overflow: hidden;
-} header * {            /* Header Contents */
-    height: 100%;
-    float: left;    /* All Content Left */
-    color: #fff;
-    list-style-type: none; /* Removes List Bullets */
-    text-decoration: none; /* Removes List Underline */
-    text-align: center;
+    padding-left: 25px;     /* Give Left Space to the Left-Side */
+} header * {/* HEADER CONTENTS */
+    /* BOX */
+    height: 100%;           /* All Heights Equal to Header */
+    color: #fff;          /* Font-Color */
+    /* CONTENT */
+    float: left;            /* All Content Left */
+    box-sizing: border-box; /* Sizes apply to Border and not the Content */
+    align-items: center;    /* Centered Vertically */
+} header ul {
+    margin: 0;
 } header li {
-    display: block;
-    padding: 10px 20px;
+    /* BOX */
+    width: 200px;
+    /* CONTENT */
+    display: flex;          /* To apply Flexbox */
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+} header #active {
+    background-color: #FF7900;
+    color: #000;
+} header a {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    list-style-type: none;  /* Removes List Bullets */
+    text-decoration: none;  /* Removes List Underline */
+} header a:hover {
+    background-color: #53029a;
 }
