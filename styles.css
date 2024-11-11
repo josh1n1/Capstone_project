@@ -97,3 +97,12 @@ header {
 } header a:hover {
     background-color: #53029a;
 }
+
+#planetary-background {
+    background-image: url(/Planet/background.jpg);
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+}
