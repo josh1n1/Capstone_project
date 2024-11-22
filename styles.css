@@ -65,6 +65,7 @@ header {
     height: 70px;
     width: 100%;            /* Take Full Width */
     background-color: #040010;
+    position: absolute;     /*  */
     /* CONTENT */
     padding-left: 25px;     /* Give Left Space to the Left-Side */
 } header * {/* HEADER CONTENTS */
@@ -96,13 +97,4 @@ header {
     text-decoration: none;  /* Removes List Underline */
 } header a:hover {
     background-color: #53029a;
-}
-
-#planetary-background {
-    background-image: url(/Planet/background.jpg);
-    height: 100vh;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    overflow: hidden;
 }
