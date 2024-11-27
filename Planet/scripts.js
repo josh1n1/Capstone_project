@@ -25,6 +25,7 @@ document.body.appendChild(renderer.domElement);
 
 
 const scene = new THREE.Scene();
+// Camera (Sets to Perspective)
 const camera = new THREE.PerspectiveCamera(
     30,
     window.innerWidth / window.innerHeight,
@@ -32,12 +33,15 @@ const camera = new THREE.PerspectiveCamera(
     1000
 );
 
+// Camera Control (Sets to Orbit)
 const orbit = new OrbitControls(camera, renderer.domElement);
+orbit.minPolarAngle = Math.PI / 2; // Lock at horizontal view
+orbit.maxPolarAngle = Math.PI / 2; // Lock at horizontal view
 // Position of the Camera
-camera.position.set(-90, 140, 140);
+camera.position.set(-90, 140, 170);
 orbit.update();
-// The Whole Lighting
-const ambientLight = new THREE.AmbientLight(0x333333, 100);
+// Whole Light (Sets to Ambient)
+const ambientLight = new THREE.AmbientLight(0x333333, 30);
 scene.add(ambientLight);
 
 // The Background Texture (Stars)
@@ -74,6 +78,11 @@ const sunMat = new THREE.MeshBasicMaterial({
 });
 const sun = new THREE.Mesh(sunGeo, sunMat);
 scene.add(sun);
+
+//Sunlight (Sets to PointLight)
+const sunLight = new THREE.PointLight(0xffffff, 25000, 0);
+sunLight.position.set(0, 0, 0);
+scene.add(sunLight);
 
 //Function of the Planets
 function createPlanete(size, texture, position, ring) {
