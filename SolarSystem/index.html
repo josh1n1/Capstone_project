@@ -7,32 +7,31 @@
     <title>Planetary Simulator</title>                  <!-- Modified the Page Title -->
 </head>
 
-<body id="background">
+<body id="planetary-background">
     <header>
         <!-- Website Logo -->
         <img src="../img/sub-logo.png" alt="Wizard Academy">
         <nav>
             <ul>
                 <!-- Simulators -->
-                <li><a href="../Planet/index.html">Planetary Simulator</a></li>
-                <li id="active">Elements Simulator</li>
-                <li><a href="../Anatomy/index.html">Anatomy Simulator</a></li>
+                <li id="active">SOLAR SYSTEM</li>
+                <li><a href="../HumanAnatomy/index.html">HUMAN ANATOMY</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <div>
-            <div>Water</div>
-            <div>Fire</div>
-            <div>Earth</div>
-            <div>Air</div>
-        </div>
-    </main>
+    <label for="orbitRotation" id="orbitRotationWrap">
+        <input type="button" id="orbitRotation" value="Orbit Rotation">
+    </label>
+    <label for="viewPlanets" id="viewPlanetsWrap">
+        <input type="button" id="viewPlanets" value="View Planets">
+    </label>
 
     <footer>
 
     </footer>
+    <script src="scripts.js" type="module"></script>
 </body>
+
 
 </html>

@@ -94,6 +94,7 @@ header {
     justify-content: center;
     list-style-type: none;  /* Removes List Bullets */
     text-decoration: none;  /* Removes List Underline */
+    transition: 0.3s;
 } header a:hover {
     background-color: #53029a;
 }
@@ -104,9 +105,22 @@ header {
     padding: 0;
 }
 
-label {
-    top: 80%;
-    left: 80%;
+/* BUTTONS */
+#orbitRotationWrap {
+    top: 95px;
+    left: 150px;
+    position: fixed;
+    width: 180px;
+    height: 50px;
+} #orbitRotation {
+    height: 100%;
+    width: 100%;
+    border-radius: 50px;
+    background-color: #FF7900;
+    border: 0;
+} #viewPlanetsWrap {
+    top: 95px;
+    left: 350px;
     position: fixed;
     width: 180px;
     height: 50px;
