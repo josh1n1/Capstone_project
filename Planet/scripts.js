@@ -1,3 +1,4 @@
+// ---------- IMPORT ----------
 // Importing the Necessary Three.js Files
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/Addons.js';
@@ -17,12 +18,13 @@ import uranusRingTexture from './img/uranus ring.png';
 import neptuneTexture from './img/neptune.jpg';
 import plutoTexture from './img/pluto.jpg';
 
-// This is the Canvas(Space)
+// ---------- CANVAS ----------
+
+// WebGLRenderer : Rendering high-performance within any compatible web browser
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 document.body.appendChild(renderer.domElement);
-
 
 const scene = new THREE.Scene();
 // Camera (Sets to Perspective)

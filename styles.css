@@ -55,17 +55,16 @@ body {
 #background {/* BODY */
     background-color: #fff;
     margin: 0;              /* Occupy the whole Backgorund */
+    padding: 0;
 }
 /* HEADER */
 header {
     /* BOX */
     margin: 0;              /* Occupy the whole Header Element */
-    top: 0;                 /* Starting from the Top */
-    left: 0;                /* Starting from the Left */
     height: 70px;
     width: 100%;            /* Take Full Width */
     background-color: #040010;
-    position: absolute;     /*  */
+    position: fixed;
     /* CONTENT */
     padding-left: 25px;     /* Give Left Space to the Left-Side */
 } header * {/* HEADER CONTENTS */
@@ -97,4 +96,24 @@ header {
     text-decoration: none;  /* Removes List Underline */
 } header a:hover {
     background-color: #53029a;
+}
+
+/* SOLAR SYSTEM */
+#planetary-background {
+    margin: 0;
+    padding: 0;
+}
+
+label {
+    top: 80%;
+    left: 80%;
+    position: fixed;
+    width: 180px;
+    height: 50px;
+} #viewPlanets {
+    height: 100%;
+    width: 100%;
+    border-radius: 50px;
+    background-color: #FF7900;
+    border: 0;
 }
