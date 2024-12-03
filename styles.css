@@ -106,10 +106,8 @@ header {
 }
 
 /* BUTTONS */
-#orbitRotationWrap {
+/* #orbitRotationWrap {
     top: 95px;
-    left: 150px;
-    position: fixed;
     width: 180px;
     height: 50px;
 } #orbitRotation {
@@ -120,8 +118,6 @@ header {
     border: 0;
 } #viewPlanetsWrap {
     top: 95px;
-    left: 350px;
-    position: fixed;
     width: 180px;
     height: 50px;
 } #viewPlanets {
@@ -129,5 +125,21 @@ header {
     width: 100%;
     border-radius: 50px;
     background-color: #FF7900;
+    border: 0;
+} */
+
+label {
+    left: 40px;
+    position: fixed;
+    width: 180px;
+    height: 40px;
+} #orbitRotationWrap {
+    top: 85px;
+} #viewPlanetsWrap {
+    top: 140px;
+} label input {
+    height: 100%;
+    width: 100%;
+    border-radius: 50px;
     border: 0;
 }

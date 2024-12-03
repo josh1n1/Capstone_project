@@ -18,35 +18,38 @@ import uranusRingTexture from './img/uranus ring.png';
 import neptuneTexture from './img/neptune.jpg';
 import plutoTexture from './img/pluto.jpg';
 
-// ---------- CANVAS ----------
+const orbitRotation = document.getElementById("orbitRotation");
+const viewPlanets = document.getElementById("viewPlanets");
 
+// ---------- CANVAS ----------
 // WebGLRenderer : Rendering high-performance within any compatible web browser
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
-
+// Appending it to the HTML Document
 document.body.appendChild(renderer.domElement);
 
+// ---------- SCENE ----------
 const scene = new THREE.Scene();
-// Camera (Sets to Perspective)
+
+// ---------- CAMERA ----------
 const camera = new THREE.PerspectiveCamera(
     30,
     window.innerWidth / window.innerHeight,
     0.1,
     1000
 );
-
 // Camera Control (Sets to Orbit)
 const orbit = new OrbitControls(camera, renderer.domElement);
-orbit.minPolarAngle = Math.PI / 2; // Lock at horizontal view
-orbit.maxPolarAngle = Math.PI / 2; // Lock at horizontal view
 // Position of the Camera
 camera.position.set(-90, 140, 170);
 orbit.update();
-// Whole Light (Sets to Ambient)
+
+// ---------- AMBIENT LIGHT ----------
 const ambientLight = new THREE.AmbientLight(0x333333, 30);
 scene.add(ambientLight);
 
-// The Background Texture (Stars)
+// ---------- MESH ----------
+// Background Stars
 const cubeTextureLoader = new THREE.CubeTextureLoader();
 scene.background = cubeTextureLoader.load([
     starsTexture,
@@ -56,37 +59,23 @@ scene.background = cubeTextureLoader.load([
     starsTexture,
     starsTexture
 ]);
-        // (For Future Edit) For the Orbit in which planet are rotating
-        // const orbit=new THREE.RingGeometry(position,position)
-        //     const orbitmaterial=new THREE.MeshBasicMaterial(
-        //         {
-        //             color: 0xaaaaaa, 
-        //             wireframe: true,
-        //             opacity: 0.5,
-        //             transparent: true
-        //         }
-        //     )
-        //     const orbitMesh=new THREE.Mesh(orbit,orbitmaterial)
-        //     orbitMesh.rotation.x= -Math.PI/2
-        //     planetMesh.add(orbit)
-        //     scene.add(orbitMesh)
 
+// Loads Textures
 const textureLoader = new THREE.TextureLoader();
 
 // Sun
 const sunGeo = new THREE.SphereGeometry(16, 30, 30);
 const sunMat = new THREE.MeshBasicMaterial({
-    map: textureLoader.load(sunTexture)
+    map: textureLoader.load(sunTexture) // Imports the sun texture to the shape
 });
 const sun = new THREE.Mesh(sunGeo, sunMat);
 scene.add(sun);
-
-//Sunlight (Sets to PointLight)
+//Sunlight
 const sunLight = new THREE.PointLight(0xffffff, 25000, 0);
 sunLight.position.set(0, 0, 0);
 scene.add(sunLight);
 
-//Function of the Planets
+//Planets' Functions
 function createPlanete(size, texture, position, ring) {
     // Geometry Where they Rotate
     const geo = new THREE.SphereGeometry(size, 30, 30);
@@ -116,7 +105,7 @@ function createPlanete(size, texture, position, ring) {
     return {mesh, obj}
 }
 
-// Planet Elements
+// Planets
 const mercury = createPlanete(3.2, mercuryTexture, 28);
 const venus = createPlanete(5.8, venusTexture, 44);
 const earth = createPlanete(6, earthTexture, 62);
@@ -172,3 +161,18 @@ window.addEventListener('resize', function() {
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
+
+        // (For Future Edit) For the Orbit in which planet are rotating
+        // const orbit=new THREE.RingGeometry(position,position)
+        //     const orbitmaterial=new THREE.MeshBasicMaterial(
+        //         {
+        //             color: 0xaaaaaa, 
+        //             wireframe: true,
+        //             opacity: 0.5,
+        //             transparent: true
+        //         }
+        //     )
+        //     const orbitMesh=new THREE.Mesh(orbit,orbitmaterial)
+        //     orbitMesh.rotation.x= -Math.PI/2
+        //     planetMesh.add(orbit)
+        //     scene.add(orbitMesh)
