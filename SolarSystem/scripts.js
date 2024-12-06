@@ -18,8 +18,9 @@ import uranusRingTexture from './img/uranus ring.png';
 import neptuneTexture from './img/neptune.jpg';
 import plutoTexture from './img/pluto.jpg';
 
-const orbitRotation = document.getElementById("orbitRotation");
-const viewPlanets = document.getElementById("viewPlanets");
+// ---------- BUTTONS ----------
+
+
 
 // ---------- CANVAS ----------
 // WebGLRenderer : Rendering high-performance within any compatible web browser
@@ -43,6 +44,11 @@ const orbit = new OrbitControls(camera, renderer.domElement);
 // Position of the Camera
 camera.position.set(-90, 140, 170);
 orbit.update();
+
+
+
+
+
 
 // ---------- AMBIENT LIGHT ----------
 const ambientLight = new THREE.AmbientLight(0x333333, 30);
@@ -127,32 +133,61 @@ const pluto = createPlanete(2.8, plutoTexture, 216);
 const pointLight = new THREE.PointLight(0xFFFFFF, 2, 900);
 scene.add(pointLight);
 
+let orbitRotation = document.getElementById("orbitRotation");
+let viewPlanets = document.getElementById("viewPlanets");
+
+// ---------- ORBIT ROTATION ----------
+let orbitEnabled = true;
+
+orbitRotation.addEventListener('click', () => {
+    orbitEnabled = true;
+});
+
 function animate() {
-    //Self-rotation
-    sun.rotateY(0.004);
-    mercury.mesh.rotateY(0.004);
-    venus.mesh.rotateY(0.002);
-    earth.mesh.rotateY(0.02);
-    mars.mesh.rotateY(0.018);
-    jupiter.mesh.rotateY(0.04);
-    saturn.mesh.rotateY(0.038);
-    uranus.mesh.rotateY(0.03);
-    neptune.mesh.rotateY(0.032);
-    pluto.mesh.rotateY(0.008);
+    
+    if (orbitEnabled) {
+        orbit.minPolarAngle = 0;
+        orbit.maxPolarAngle = Math.PI;
+        orbit.enableZoom = true;
 
-    //Around-sun-rotation
-    mercury.obj.rotateY(0.04);
-    venus.obj.rotateY(0.015);
-    earth.obj.rotateY(0.01);
-    mars.obj.rotateY(0.008);
-    jupiter.obj.rotateY(0.002);
-    saturn.obj.rotateY(0.0009);
-    uranus.obj.rotateY(0.0004);
-    neptune.obj.rotateY(0.0001);
-    pluto.obj.rotateY(0.00007);
-
+        // Self-Rotation
+        sun.rotateY(0.004);
+        mercury.mesh.rotateY(0.004);
+        venus.mesh.rotateY(0.002);
+        earth.mesh.rotateY(0.02);
+        mars.mesh.rotateY(0.018);
+        jupiter.mesh.rotateY(0.04);
+        saturn.mesh.rotateY(0.038);
+        uranus.mesh.rotateY(0.03);
+        neptune.mesh.rotateY(0.032);
+        pluto.mesh.rotateY(0.008);
+        // Orbit-Rotation
+        mercury.obj.rotateY(0.04);
+        venus.obj.rotateY(0.015);
+        earth.obj.rotateY(0.01);
+        mars.obj.rotateY(0.008);
+        jupiter.obj.rotateY(0.002);
+        saturn.obj.rotateY(0.0009);
+        uranus.obj.rotateY(0.0004);
+        neptune.obj.rotateY(0.0001);
+        pluto.obj.rotateY(0.00007);
+    };
     renderer.render(scene, camera);
 }
+
+
+
+// ---------- VIEW PLANETS ----------
+viewPlanets.addEventListener('click', () => {
+    orbitEnabled = false;
+
+    orbit.minPolarAngle = Math.PI / 2;
+    orbit.maxPolarAngle = Math.PI / 2;
+    orbit.enableZoom = false;
+    orbit.update();
+});
+
+
 
 renderer.setAnimationLoop(animate);
 
