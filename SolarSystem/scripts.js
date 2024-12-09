@@ -18,9 +18,6 @@ import uranusRingTexture from './img/uranus ring.png';
 import neptuneTexture from './img/neptune.jpg';
 import plutoTexture from './img/pluto.jpg';
 
-// ---------- BUTTONS ----------
-
-
 
 // ---------- CANVAS ----------
 // WebGLRenderer : Rendering high-performance within any compatible web browser
@@ -136,20 +133,26 @@ scene.add(pointLight);
 let orbitRotation = document.getElementById("orbitRotation");
 let viewPlanets = document.getElementById("viewPlanets");
 
+const defaultPositions = {
+    mercury: mercury.obj.position.clone(),
+    venus: venus.obj.position.clone(),
+    earth: earth.obj.position.clone(),
+    mars: mars.obj.position.clone(),
+    jupiter: jupiter.obj.position.clone(),
+    saturn: saturn.obj.position.clone(),
+    uranus: uranus.obj.position.clone(),
+    neptune: neptune.obj.position.clone(),
+    pluto: pluto.obj.position.clone()
+};
+
 // ---------- ORBIT ROTATION ----------
 let orbitEnabled = true;
 
-orbitRotation.addEventListener('click', () => {
-    orbitEnabled = true;
-});
-
 function animate() {
-    
     if (orbitEnabled) {
         orbit.minPolarAngle = 0;
         orbit.maxPolarAngle = Math.PI;
         orbit.enableZoom = true;
-
         // Self-Rotation
         sun.rotateY(0.004);
         mercury.mesh.rotateY(0.004);
@@ -162,29 +165,154 @@ function animate() {
         neptune.mesh.rotateY(0.032);
         pluto.mesh.rotateY(0.008);
         // Orbit-Rotation
-        mercury.obj.rotateY(0.04);
-        venus.obj.rotateY(0.015);
-        earth.obj.rotateY(0.01);
-        mars.obj.rotateY(0.008);
-        jupiter.obj.rotateY(0.002);
-        saturn.obj.rotateY(0.0009);
-        uranus.obj.rotateY(0.0004);
-        neptune.obj.rotateY(0.0001);
-        pluto.obj.rotateY(0.00007);
+        mercury.obj.rotateY(0.040);
+        venus.obj.rotateY(0.035);
+        earth.obj.rotateY(0.032);
+        mars.obj.rotateY(0.025);
+        jupiter.obj.rotateY(0.024);
+        saturn.obj.rotateY(0.015);
+        uranus.obj.rotateY(0.011);
+        neptune.obj.rotateY(0.007);
+        pluto.obj.rotateY(0.0045);
     };
     renderer.render(scene, camera);
 }
+function orbitPositions() {
+    gsap.to(mercury.obj.position, {
+        x: defaultPositions.mercury.x,
+        y: defaultPositions.mercury.y,
+        z: defaultPositions.mercury.z,
+        duration: 2
+    }); gsap.to(venus.obj.position, {
+        x: defaultPositions.venus.x,
+        y: defaultPositions.venus.y,
+        z: defaultPositions.venus.z,
+        duration: 2
+    }); gsap.to(earth.obj.position, {
+        x: defaultPositions.earth.x,
+        y: defaultPositions.earth.y,
+        z: defaultPositions.earth.z,
+        duration: 2
+    }); gsap.to(mars.obj.position, {
+        x: defaultPositions.earth.x,
+        y: defaultPositions.earth.y,
+        z: defaultPositions.earth.z,
+        duration: 2
+    }); gsap.to(jupiter.obj.position, {
+        x: defaultPositions.earth.x,
+        y: defaultPositions.earth.y,
+        z: defaultPositions.earth.z,
+        duration: 2
+    }); gsap.to(saturn.obj.position, {
+        x: defaultPositions.earth.x,
+        y: defaultPositions.earth.y,
+        z: defaultPositions.earth.z,
+        duration: 2
+    }); gsap.to(uranus.obj.position, {
+        x: defaultPositions.earth.x,
+        y: defaultPositions.earth.y,
+        z: defaultPositions.earth.z,
+        duration: 2
+    }); gsap.to(neptune.obj.position, {
+        x: defaultPositions.earth.x,
+        y: defaultPositions.earth.y,
+        z: defaultPositions.earth.z,
+        duration: 2
+    }); gsap.to(pluto.obj.position, {
+        x: defaultPositions.earth.x,
+        y: defaultPositions.earth.y,
+        z: defaultPositions.earth.z,
+        duration: 2
+    }); 
+}
+
+orbitRotation.addEventListener('click', () => {
+    orbitEnabled = true;
+    orbitPositions();
+});
 
 
 
 // ---------- VIEW PLANETS ----------
+function alignPlanets() {
+    const planetDistance = 50; // Distance from the Sun for the aligned positions
+    const numPlanets = 9; // Total number of planets
+    const angleStep = (2 * Math.PI) / numPlanets;
+
+    gsap.to(mercury.obj.position, {
+        x: Math.cos(0 * angleStep) * planetDistance,
+        z: Math.sin(0 * angleStep) * planetDistance,
+        duration: 2, // Animation duration
+        ease: 'power1.out' // Ease type
+    });
+    gsap.to(venus.obj.position, {
+        x: Math.cos(1 * angleStep) * planetDistance,
+        z: Math.sin(1 * angleStep) * planetDistance,
+        duration: 2,
+        ease: 'power1.out'
+    });
+    gsap.to(earth.obj.position, {
+        x: Math.cos(2 * angleStep) * planetDistance,
+        z: Math.sin(2 * angleStep) * planetDistance,
+        duration: 2,
+        ease: 'power1.out'
+    });
+    gsap.to(mars.obj.position, {
+        x: Math.cos(3 * angleStep) * planetDistance,
+        z: Math.sin(3 * angleStep) * planetDistance,
+        duration: 2,
+        ease: 'power1.out'
+    });
+    gsap.to(jupiter.obj.position, {
+        x: Math.cos(4 * angleStep) * planetDistance,
+        z: Math.sin(4 * angleStep) * planetDistance,
+        duration: 2,
+        ease: 'power1.out'
+    });
+    gsap.to(saturn.obj.position, {
+        x: Math.cos(5 * angleStep) * planetDistance,
+        z: Math.sin(5 * angleStep) * planetDistance,
+        duration: 2,
+        ease: 'power1.out'
+    });
+    gsap.to(uranus.obj.position, {
+        x: Math.cos(6 * angleStep) * planetDistance,
+        z: Math.sin(6 * angleStep) * planetDistance,
+        duration: 2,
+        ease: 'power1.out'
+    });
+    gsap.to(neptune.obj.position, {
+        x: Math.cos(7 * angleStep) * planetDistance,
+        z: Math.sin(7 * angleStep) * planetDistance,
+        duration: 2,
+        ease: 'power1.out'
+    });
+    gsap.to(pluto.obj.position, {
+        x: Math.cos(8 * angleStep) * planetDistance,
+        z: Math.sin(8 * angleStep) * planetDistance,
+        duration: 2,
+        ease: 'power1.out'
+    });
+}
+
 viewPlanets.addEventListener('click', () => {
-    orbitEnabled = false;
+    orbitEnabled = false; // Orbit Enabled Button deselected
+    alignPlanets();
+
+    orbit.enableZoom = false;
+    orbit.update();
+    gsap.to(camera.position, {
+        x: 0,
+        y: 0,
+        z: 170,
+        duration: 5,
+        onUpdate: () => {
+          camera.lookAt(0, 0, 0);
+        },
+      });
 
     orbit.minPolarAngle = Math.PI / 2;
     orbit.maxPolarAngle = Math.PI / 2;
-    orbit.enableZoom = false;
-    orbit.update();
 });
 
 
