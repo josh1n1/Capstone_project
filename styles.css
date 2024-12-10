@@ -105,29 +105,6 @@ header {
     padding: 0;
 }
 
-/* BUTTONS */
-/* #orbitRotationWrap {
-    top: 95px;
-    width: 180px;
-    height: 50px;
-} #orbitRotation {
-    height: 100%;
-    width: 100%;
-    border-radius: 50px;
-    background-color: #FF7900;
-    border: 0;
-} #viewPlanetsWrap {
-    top: 95px;
-    width: 180px;
-    height: 50px;
-} #viewPlanets {
-    height: 100%;
-    width: 100%;
-    border-radius: 50px;
-    background-color: #FF7900;
-    border: 0;
-} */
-
 label {
     left: 40px;
     position: fixed;
@@ -142,4 +119,22 @@ label {
     width: 100%;
     border-radius: 50px;
     border: 0;
+}
+
+/* SOLAR DESC */
+#solar-desc {
+    position: fixed;
+    left: 40px;
+    top: 200px;
+    height: 500px;
+    width: 270px;
+    color: #8800ff;
+    border: 2px solid #8800ff;
+    border-radius: 10px;
+} #solar-desk h3 {
+    width: 90%;
+    position: fixed;
+} #solar-desk p {
+    width: 80%;
+    position: fixed;
 }
