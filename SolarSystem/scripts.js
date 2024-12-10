@@ -130,8 +130,6 @@ const pluto = createPlanete(2.8, plutoTexture, 216);
 const pointLight = new THREE.PointLight(0xFFFFFF, 2, 900);
 scene.add(pointLight);
 
-let orbitRotation = document.getElementById("orbitRotation");
-let viewPlanets = document.getElementById("viewPlanets");
 
 const defaultPositions = {
     mercury: mercury.obj.position.clone(),
@@ -145,25 +143,22 @@ const defaultPositions = {
     pluto: pluto.obj.position.clone()
 };
 
-// ---------- ORBIT ROTATION ----------
-let orbitEnabled = true;
-
 function animate() {
+    // Self-Rotation
+    sun.rotateY(0.004);
+    mercury.mesh.rotateY(0.004);
+    venus.mesh.rotateY(0.002);
+    earth.mesh.rotateY(0.02);
+    mars.mesh.rotateY(0.018);
+    jupiter.mesh.rotateY(0.04);
+    saturn.mesh.rotateY(0.038);
+    uranus.mesh.rotateY(0.03);
+    neptune.mesh.rotateY(0.032);
+    pluto.mesh.rotateY(0.008);
     if (orbitEnabled) {
         orbit.minPolarAngle = 0;
         orbit.maxPolarAngle = Math.PI;
         orbit.enableZoom = true;
-        // Self-Rotation
-        sun.rotateY(0.004);
-        mercury.mesh.rotateY(0.004);
-        venus.mesh.rotateY(0.002);
-        earth.mesh.rotateY(0.02);
-        mars.mesh.rotateY(0.018);
-        jupiter.mesh.rotateY(0.04);
-        saturn.mesh.rotateY(0.038);
-        uranus.mesh.rotateY(0.03);
-        neptune.mesh.rotateY(0.032);
-        pluto.mesh.rotateY(0.008);
         // Orbit-Rotation
         mercury.obj.rotateY(0.040);
         venus.obj.rotateY(0.035);
@@ -177,6 +172,8 @@ function animate() {
     };
     renderer.render(scene, camera);
 }
+
+
 function orbitPositions() {
     gsap.to(mercury.obj.position, {
         x: defaultPositions.mercury.x,
@@ -226,14 +223,6 @@ function orbitPositions() {
     }); 
 }
 
-orbitRotation.addEventListener('click', () => {
-    orbitEnabled = true;
-    orbitPositions();
-});
-
-
-
-// ---------- VIEW PLANETS ----------
 function alignPlanets() {
     const planetDistance = 50; // Distance from the Sun for the aligned positions
     const numPlanets = 9; // Total number of planets
@@ -295,10 +284,30 @@ function alignPlanets() {
     });
 }
 
-viewPlanets.addEventListener('click', () => {
-    orbitEnabled = false; // Orbit Enabled Button deselected
-    alignPlanets();
+// BUTTON FUNCTIONS
+let orbitRotation = document.getElementById("orbitRotation");
+let viewPlanets = document.getElementById("viewPlanets");
+let orbitEnabled = true;
+const solarDesc = document.getElementById("solar-desc");
 
+
+function orbitFunction() {
+    // The Solar System / Planets Information
+    solarDesc.style.display = 'block';
+    // Orbit is Now Active
+    orbitEnabled = true;
+    // The Orbit Position is now in Place
+    orbitPositions();
+} orbitRotation.addEventListener('click', () => {
+    orbitFunction();
+});
+function planetsFunction() {
+    // The Solar System / Planets Information
+    solarDesc.style.display = 'none';
+    // Orbit Rotation ain't Active
+    orbitEnabled = false;
+    // The Orbit Position are Aligned to each other
+    alignPlanets();
     orbit.enableZoom = false;
     orbit.update();
     gsap.to(camera.position, {
@@ -310,12 +319,12 @@ viewPlanets.addEventListener('click', () => {
           camera.lookAt(0, 0, 0);
         },
       });
-
     orbit.minPolarAngle = Math.PI / 2;
     orbit.maxPolarAngle = Math.PI / 2;
+} viewPlanets.addEventListener('click', () => {
+    orbitEnabled = false;
+    planetsFunction();
 });
-
-
 
 renderer.setAnimationLoop(animate);
 
