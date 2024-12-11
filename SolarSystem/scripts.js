@@ -161,34 +161,34 @@ function orbitPositions() {
         z: defaultPositions.earth.z,
         duration: 2
     }); gsap.to(mars.obj.position, {
-        x: defaultPositions.earth.x,
-        y: defaultPositions.earth.y,
-        z: defaultPositions.earth.z,
+        x: defaultPositions.mars.x,
+        y: defaultPositions.mars.y,
+        z: defaultPositions.mars.z,
         duration: 2
     }); gsap.to(jupiter.obj.position, {
-        x: defaultPositions.earth.x,
-        y: defaultPositions.earth.y,
-        z: defaultPositions.earth.z,
+        x: defaultPositions.jupiter.x,
+        y: defaultPositions.jupiter.y,
+        z: defaultPositions.jupiter.z,
         duration: 2
     }); gsap.to(saturn.obj.position, {
-        x: defaultPositions.earth.x,
-        y: defaultPositions.earth.y,
-        z: defaultPositions.earth.z,
+        x: defaultPositions.saturn.x,
+        y: defaultPositions.saturn.y,
+        z: defaultPositions.saturn.z,
         duration: 2
     }); gsap.to(uranus.obj.position, {
-        x: defaultPositions.earth.x,
-        y: defaultPositions.earth.y,
-        z: defaultPositions.earth.z,
+        x: defaultPositions.uranus.x,
+        y: defaultPositions.uranus.y,
+        z: defaultPositions.uranus.z,
         duration: 2
     }); gsap.to(neptune.obj.position, {
-        x: defaultPositions.earth.x,
-        y: defaultPositions.earth.y,
-        z: defaultPositions.earth.z,
+        x: defaultPositions.neptune.x,
+        y: defaultPositions.neptune.y,
+        z: defaultPositions.neptune.z,
         duration: 2
     }); gsap.to(pluto.obj.position, {
-        x: defaultPositions.earth.x,
-        y: defaultPositions.earth.y,
-        z: defaultPositions.earth.z,
+        x: defaultPositions.pluto.x,
+        y: defaultPositions.pluto.y,
+        z: defaultPositions.pluto.z,
         duration: 2
     }); 
 }
