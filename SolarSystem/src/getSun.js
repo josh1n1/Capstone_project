@@ -49,7 +49,7 @@ function getSun() {
     const coronaMesh = getCorona();
     sun.add(coronaMesh);
 
-    const sunLight = new THREE.PointLight(0xFFFF99, 25000, 0);
+    const sunLight = new THREE.PointLight(0xFFFF99, 10, 0);
     sun.add(sunLight);
     sun.userData.update = (t) => {
         sun.rotation.y = t;
