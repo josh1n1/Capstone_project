@@ -145,7 +145,7 @@ label {
     display: none;
   }
 
-button {
+.camera-button {
     position: fixed;
     left: 40px;
     width: 180px;
@@ -156,8 +156,25 @@ button {
     border-radius: 25px;
     font-size: 1rem;
     cursor: pointer;
-} #orbitRotation {
+} .button1 {
     top: 85px;
-} #viewPlanets {
+} .button2 {
     top: 140px;
+}
+
+#parts-container {
+    background-color: #020234;
+    width: 305px;
+    height: 669px;
+    margin-top: 70px;
+    float: right;
+} .parts {
+    background-color: #020234;
+    width: 305px;
+    height: 62px;
+    border: 0;
+    font-weight: bold;
+    color: white;
+} .parts:active {
+    background-color: #FF7900;
 }
