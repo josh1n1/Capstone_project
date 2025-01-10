@@ -170,11 +170,25 @@ planets.forEach((planet) => solarSystem.add(planet));
 
 // Rotation controls
 let rotate = true;
+let lastTime = 0;
 
 function setRotationState(isRotating) {
     rotate = isRotating;
+    
+    if (isRotating) {
+        // When starting rotation, update lastTime to current time
+        // This prevents a sudden jump in position
+        lastTime = performance.now() * 0.0002;
+    }
+    
     planets.forEach((planet) => {
         if (isRotating) {
+            // Store current position before starting rotation
+            planet.userData.lastPosition = {
+                x: planet.position.x,
+                y: planet.position.y,
+                z: planet.position.z
+            };
             planet.userData.startRotation?.();
         } else {
             planet.userData.stopRotation?.();
@@ -195,11 +209,15 @@ document.getElementById("viewPlanets")?.addEventListener('click', () => {
 const ambientLight = new THREE.AmbientLight(0x333333, 2);
 scene.add(ambientLight);
 
-// Animation loop
+// Update animation loop
 function animate(t = 0) {
-    const time = t * 0.0002;
+    const time = rotate ? t * 0.0002 : lastTime;
     requestAnimationFrame(animate);
-    solarSystem.userData.update(time);
+    
+    if (rotate) {
+        solarSystem.userData.update(time);
+    }
+    
     renderer.render(scene, camera);
     controls.update();
 } 
