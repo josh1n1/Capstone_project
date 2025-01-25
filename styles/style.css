@@ -1,0 +1,176 @@
+body {
+    font-family: Tahoma;
+    height: 100vh;
+}
+
+/* index File (Intro) */
+#intro-background {     /* Body */
+    background-color: #FF7900;
+} #intro-main {         /* Main */
+    background-color: #040010;
+    height: 520px;
+    width: 550px;
+    max-width: 1000px;
+    min-width: 300px;
+    margin: 100px auto;
+    border-radius: 10px;
+    /* Flexbox */
+    display: flex;
+    flex-direction: column; /* Aligned the items vertically */
+    align-items: center; /* Centers items horizontally (vertically if the flex-direction is set to row)  */
+} #intro-main img {     /* Logo */
+    height: 180px;
+    max-width: 200px;
+    min-width: 100px;
+    margin: 20px 0;
+    border-radius: 20px;
+} #intro-main h2 {      /* Website Description*/
+    color: #fff;
+    margin: 0;
+} #intro-main #sub-logo { /* Sub-Logo */
+    margin: 0;
+} #intro-main a {       /* Get Started Button */
+    background-color: #8800ff;
+    height: 40px;
+    width: 150px;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    /* Font */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bolder;
+    /* Transition Effect */
+    transition: background-color 0.3s ease;
+} #intro-main a:hover {
+    background-color: #53029a;
+}
+
+
+/* SIMULATORS */
+#background {/* BODY */
+    background-color: #fff;
+    margin: 0;              /* Occupy the whole Backgorund */
+    padding: 0;
+}
+/* HEADER */
+header {
+    /* BOX */
+    margin: 0;              /* Occupy the whole Header Element */
+    height: 70px;
+    width: 100%;            /* Take Full Width */
+    background-color: #040010;
+    position: fixed;
+    /* CONTENT */
+    padding-left: 25px;     /* Give Left Space to the Left-Side */
+} header * {/* HEADER CONTENTS */
+    /* BOX */
+    height: 100%;           /* All Heights Equal to Header */
+    color: #fff;          /* Font-Color */
+    /* CONTENT */
+    float: left;            /* All Content Left */
+    box-sizing: border-box; /* Sizes apply to Border and not the Content */
+    align-items: center;    /* Centered Vertically */
+} header ul {
+    margin: 0;
+} header li {
+    /* BOX */
+    width: 200px;
+    /* CONTENT */
+    display: flex;          /* To apply Flexbox */
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+} header #active {
+    background-color: #FF7900;
+    color: #000;
+} header a {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    list-style-type: none;  /* Removes List Bullets */
+    text-decoration: none;  /* Removes List Underline */
+    transition: 0.3s;
+} header a:hover {
+    background-color: #53029a;
+}
+
+/* SOLAR SYSTEM */
+#planetary-background {
+    margin: 0;
+    padding: 0;
+}
+
+label {
+    left: 40px;
+    position: fixed;
+    
+} #orbitRotationWrap {
+    top: 85px;
+} #viewPlanetsWrap {
+    top: 140px;
+} label input {
+    height: 100%;
+    width: 100%;
+    border-radius: 50px;
+    border: 0;
+}
+
+/* SOLAR DESC */
+#solar-desc {
+    position: fixed;
+    left: 40px;
+    top: 200px;
+    height: 400px;
+    width: 300px;
+    color: #ffffff;
+    border: 2px solid #8800ff;
+    border-radius: 10px;
+    display: none;
+    padding: 10px;
+    overflow: scroll;
+} #solar-desc h3 {
+    font-size: 2rem;
+} #solar-desc p {
+    font-size: large;
+} #solar-desc::-webkit-scrollbar {
+    display: none;
+  }
+
+.camera-button {
+    position: fixed;
+    left: 40px;
+    width: 180px;
+    height: 40px;
+    border: 2px solid #FF7900;
+    background-color: #040010;
+    color: #fff;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+} .button1 {
+    top: 85px;
+} .button2 {
+    top: 140px;
+}
+
+#parts-container {
+    background-color: #020234;
+    width: 305px;
+    height: 669px;
+    margin-top: 70px;
+    float: right;
+} .parts {
+    background-color: #020234;
+    width: 305px;
+    height: 62px;
+    border: 0;
+    font-weight: bold;
+    color: white;
+} .parts:active {
+    background-color: #FF7900;
+}
