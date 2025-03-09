@@ -1,6 +1,6 @@
 Install node.js
 
-TERMINAL RUN
-npm install --save three
-npm install --save-dev vite
-npx vite
+CMD Terminal  (Not Powershell):
+C:\Users\Capstone: npm install --save three
+C:\Users\Capstone: --save-dev vite
+C:\Users\Capstone: npx vite
