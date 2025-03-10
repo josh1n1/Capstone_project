@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { getFresnelMat } from './getFresnelMat.js';
+import { getFresnelMat } from './getFresnelMat';
 import { ImprovedNoise } from 'three/examples/jsm/Addons.js';
 
 function getCorona() {
@@ -34,7 +34,7 @@ function getCorona() {
     return mesh;
 }
 
-function getSun() {
+export function getSun() {
     const geo = new THREE.IcosahedronGeometry(1, 6);
     const sunMat = new THREE.MeshStandardMaterial({
         emissive: 0xFF0000,
@@ -56,4 +56,4 @@ function getSun() {
         coronaMesh.userData.update(t);
     };
     return sun;
-} export default getSun;
+}
