@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/Addons.js';
 import { getGalaxy } from './Main/getGalaxy';
+import { getNebula } from './Main/getNebula';
 import { getSystem } from './Main/getSystem';
 
 //SCENE SETUP------------------/
@@ -39,6 +40,24 @@ export function getScene() {
     //Background Objects-------/
     const galaxy = getGalaxy();
     scene.add(galaxy);
+    const nebula = getNebula({
+        hue: 0.6,
+        numSprites: 10,
+        opacity: 0.2,
+        radius: 40,
+        size: 80,
+        z: -50.5,
+    });
+    scene.add(nebula);
+    const anotherNebula = getNebula({
+        hue: 0.0,
+        numSprites: 10,
+        opacity: 0.2,
+        radius: 40,
+        size: 80,
+        z: 50.5,
+    });
+    scene.add(anotherNebula);
     //Main Objects-------------/
     const system = getSystem();
     system.name = 'system'; 

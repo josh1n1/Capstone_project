@@ -5,7 +5,7 @@ const loader = new THREE.TextureLoader();
 function getSprite({ color, opacity, pos, size }) {
   const spriteMat = new THREE.SpriteMaterial({
     color,
-    map: loader.load("./src/rad-grad.png"),
+    map: loader.load("../../img/textures/rad-grad.png"),
     transparent: true,
     opacity,
   });
@@ -18,7 +18,7 @@ function getSprite({ color, opacity, pos, size }) {
   return sprite;
 }
 
-function getNebula({
+export function getNebula({
   hue = 0.0,
   numSprites = 10,
   opacity = 1,
@@ -44,4 +44,3 @@ function getNebula({
   }
   return layerGroup;
 }
-export default getNebula;
