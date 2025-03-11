@@ -1,6 +1,6 @@
 import * as THREE from "three";
 
-export function getGalaxy({ numStars = 500, size = 0.2 } = {}) {
+export function getGalaxy({ numStars = 5000, size = 0.2 } = {}) {
   function randomSpherePoint() {
     const radius = Math.random() * 25 + 25;
     const u = Math.random();
@@ -36,7 +36,7 @@ export function getGalaxy({ numStars = 500, size = 0.2 } = {}) {
     size,
     vertexColors: true,
     map: new THREE.TextureLoader().load(
-      "./src/circle.png"
+      "../../img/textures/circle.png"
     ),
   });
   const points = new THREE.Points(geo, mat);

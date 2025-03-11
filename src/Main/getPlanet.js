@@ -6,7 +6,7 @@ const texture = new THREE.TextureLoader();
 //PLANET OBJECT---------------/
 export function getPlanet ({ size=0.1, img='', distance=0, children=[], color='', rotation=0 }) {
   const geometry = new THREE.IcosahedronGeometry( size, 6 ); // Planet Geometry
-  const map = texture.load(`../../../img/project_1/${img}`);
+  const map = texture.load(`../../img/textures/${img}`);
   const material = new THREE.MeshStandardMaterial({ map }); // Planet Material
   const planet = new THREE.Mesh( geometry, material ); // Planet Mesh (Geometry + Material)
 
@@ -35,7 +35,7 @@ export function getPlanet ({ size=0.1, img='', distance=0, children=[], color=''
 //MOON OBJECT-----------------/
 export function getMoon( ) {
   const geometry = new THREE.IcosahedronGeometry( 0.03, 6 );
-  const map = texture.load( `../../../img/project_1/moontex.png` );
+  const map = texture.load( `../../img/textures/moontex.png` );
   const material = new THREE.MeshStandardMaterial({ map });
 
   const moon = new THREE.Mesh( geometry, material );
@@ -49,7 +49,7 @@ export function getMoon( ) {
 //RING OBJECT-----------------/
 export function getRing({ radius=0.1, tube=0.1, img='' }) {
   const geometry = new THREE.TorusGeometry(radius, tube, 2, 64);
-  const map = texture.load(`../../../img/project_1/${img}`);
+  const map = texture.load(`../../img/textures/${img}`);
   const material = new THREE.MeshStandardMaterial({ map });
 
   const ring = new THREE.Mesh( geometry, material );
