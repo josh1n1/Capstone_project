@@ -2,60 +2,39 @@ import * as THREE from 'three';
 //Libraries--------------------/
 import { getSun } from './getSun.js';
 import { getPlanet, getMoon, getRing } from './getPlanet';
+import { planetDetails } from '../Data/planetDetails.js';
 
 
 export function getSystem() {
     const group = new THREE.Group();
 
+    for(let planet of planetDetails){
+ 
+        const {rotation, img} = planet
+        
+        const planetObj = getPlanet(planet);
+        planetObj.orbit = rotation
+        group.add(planetObj);
+
+        if(img.includes("earth")){
+            const moon = getMoon();
+            planetObj.add(moon);
+        }
+        if(img.includes("saturn")){
+            const saturnRing = getRing({ radius:0.5, tube:0.1, img:'saturn ring.png' });
+            saturnRing.rotation.x = Math.PI / 4;
+            planetObj.add(saturnRing);
+        }
+        if(img.includes("uranus")){
+            const uranusRing = getRing({ radius:0.3, tube:0.05, img:'uranus ring.png' });
+            planetObj.add(uranusRing)
+        }
+    }
+
 //SYSTEM OBJECTS---------------/
 // Sun-------------------------/
     const sun = getSun();
     group.add(sun);
-
-// Planets----------------------/
-    const mercury = getPlanet({ size:0.05, img:'mercury.jpg', distance:2, color:0xD7D7D7, rotation:0.02 });
-    mercury.orbit = 0.02;
-    group.add(mercury);
-
-    const venus = getPlanet({ size:0.1, img:'venus.jpg', distance:3, color:0xFC9417, rotation:0.015 });
-    venus.orbit = 0.015;
-    group.add(venus);
-
-    const earth = getPlanet({ size:0.12, img:'earth.jpg', distance:4, color:0x00DDD8, rotation:0.01 });
-    earth.orbit = 0.01;
-    group.add(earth);
-
-    const mars = getPlanet({ size:0.08, img:'mars.jpg', distance:5, color:0xFF4A4A, rotation:0.008 });
-    mars.orbit = 0.008;
-    group.add(mars);
-
-    const jupiter = getPlanet({ size:0.3, img:'jupiter.jpg', distance:7, color:0xFFB54A, rotation:0.005 });
-    jupiter.orbit = 0.0045;
-    group.add(jupiter);
-
-    const saturn = getPlanet({ size:0.25, img:'saturn.jpg', distance:9, color:0xFFCA7E, rotation:0.004 });
-    saturn.orbit = 0.004;
-    group.add(saturn);
-
-    const uranus = getPlanet({ size:0.2, img:'uranus.jpg', distance:11, color:0xA3FFEE, rotation:0.003 });
-    uranus.orbit = 0.003;
-    group.add(uranus);
-
-    const neptune = getPlanet({ size:0.2, img:'neptune.jpg', distance:13, color:0x00B6FF, rotation:0.002 });
-    neptune.orbit = 0.002;
-    group.add(neptune);
-
-//Moon--------------------------/
-const moon = getMoon();
-earth.add(moon);
-
-//RING--------------------------/
-const saturnRing = getRing({ radius:0.5, tube:0.1, img:'saturn ring.png' });
-saturnRing.rotation.x = Math.PI / 4;
-saturn.add(saturnRing);
-
-const uranusRing = getRing({ radius:0.3, tube:0.05, img:'uranus ring.png' });
-uranus.add(uranusRing);
 
     group.update = () => {
         group.rotation.y += 0.005; // Rotate the Entire Group

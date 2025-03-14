@@ -8,20 +8,51 @@ export function getHandlers( scene, camera, renderer, controls, toSwitch ) {
 
     //BUTTONS------------------/
     // Initialization----------/
-    const toResume = document.getElementById( "orbitRotation" );
-    const toPause = document.getElementById( "viewPlanets" );
+    const sunHover = document.getElementById('sun');
+    const mercuryHover = document.getElementById('mercury');
+    const venusHover = document.getElementById('venus');
+    const earthHover = document.getElementById('earth');
+    const marsHover = document.getElementById('mars');
+    const jupiterHover = document.getElementById('jupiter');
+    const saturnHover = document.getElementById('saturn');
+    const uranusHover = document.getElementById('uranus');
+    const neptuneHover = document.getElementById('neptune');
+
+    const planets = {
+        earthHover: "Earth"
+    }
+
+    const container = document.getElementById('container');
+
+    // Function ---------------/
+    function showPlanetName(name, position) {
+        const vector = new THREE.Vector3();
+        vector.setFromMatrixPosition(planetPosition);
+        vector.project(camera);
+
+        const x = (vector.x * 0.5 + 0.5) * window.innerWidth;
+        const y = (vector.y * -0.5 + 0.5) * window.innerHeight;
+
+        container.innerText = name;
+        container.style.top = `${y}px`;
+        container.style.left = `${x}px`;
+        container.style.display = 'block';
+    }
+    function hidePlanetName() {
+        container.style.display = 'none';
+    }
+
+    // Hover Listeners---------/
+
+    sunHover.addEventListener('mouseover', () => {
+        const name= planets.sunHover;
+        const planet = scene.getObjectByName(name);
+        if (planet) {
+            showPlanetName(name, planet.matrixWorld);
+        }
+    }); earthHover.addEventListener('mouseover', hidePlanetName);
 
     // Button Listeners--------/
-    toResume.addEventListener( 'click', () => {
-        toSwitch = true;
-        toPause.disabled = false;
-        toResume.disabled = true;
-    });
-    toPause.addEventListener( 'click', () => {
-        toSwitch = false;
-        toPause.disabled = true;
-        toResume.disabled = false;
-    });
 
     //PLANET DETECTION---------/
     // Initialization----------/
